@@ -1,3 +1,4 @@
+# Local padrao: /etc/hosts.allow
 
 # Comando para verificar se o serviço de rede tem suporte ao TCPWrappers: ldd /usr/sbin/sshd | grep libwrap
 # Logando as informações de acesso nos arquivos de log: /var/log/tcpwrappers-allow-*.log
