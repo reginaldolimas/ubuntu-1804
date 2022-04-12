@@ -1,14 +1,5 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Data de criação: 12/06/2021
-# Data de atualização: 18/06/2021
-# Versão: 0.04
-# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
-# Kernel >= 4.15.x
+
 # Testado e homologado para a versão do TFTP-HPA v5.2.x e PXE Syslinux v
 #
 # Trivial File Transfer Protocol (ou apenas TFTP) é um protocolo de transferência de arquivos, 
