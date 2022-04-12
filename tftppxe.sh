@@ -75,8 +75,8 @@ fi
 # opção do dpkg: -s (status), opção do echo: -e (interpretador de escapes de barra invertida), -n (permite nova linha)
 # || (operador lógico OU), 2> (redirecionar de saída de erro STDERR), && = operador lógico AND, { } = agrupa comandos em blocos
 # [ ] = testa uma expressão, retornando 0 ou 1, -ne = é diferente (NotEqual)
-echo -n "Verificando as dependências do Tftpd-Hpa Server e PXE/Syslinux, aguarde... "
-	for name in isc-dhcp-server
+echo -n "Verificando as dependências do Tftpd-Hpa Server, PXE/Syslinux e NFS Server, aguarde... "
+	for name in isc-dhcp-server nfs-kernel-server
 	do
 		[[ $(dpkg -s $name 2> /dev/null) ]] || { 
 			echo -en "\n\nO software: $name precisa ser instalado. \nUse o comando 'apt install $name'\n";
@@ -138,10 +138,10 @@ sleep 5
 echo -e "Instalando o Tftpd-Hpa Server/Client e PXE/Syslinux, aguarde...\n"
 sleep 5
 #
-echo -e "Instalando o Serviço do Tftpd-Hpa Server e Client, aguarde..."
+echo -e "Instalando o Serviço do Tftpd-Hpa Server, Client e NFS Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
-	apt -y install tftpd-hpa tftp-hpa &>> $LOG
-echo -e "Tftpd-Hpa Server e Client instalado com sucesso!!!, continuando com o script...\n"
+	apt -y install tftpd-hpa tftp-hpa nfs-kernel-server &>> $LOG
+echo -e "Tftpd-Hpa Server, Client e NFS Server instalado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Instalando o Serviço do Syslinux e Pxelinux, aguarde..."
