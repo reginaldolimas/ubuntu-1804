@@ -159,6 +159,15 @@ echo -e "Atualizando o arquivo de configuração do Tftpd-Hpa Server, aguarde...
 echo -e "Arquivo atualizado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+echo -e "Atualizando o arquivo de configuração do NFS Server, aguarde..."
+	# opção do comando: &>> (redirecionar a saída padrão)
+	# opção do comando mv: -v (verbose)
+	# opção do comando cp: -v (verbose)
+	mv -v /etc/exports /etc/exports.old &>> $LOG
+	cp -v conf/exports /etc/exports &>> $LOG
+echo -e "Arquivo atualizado com sucesso!!!, continuando com o script...\n"
+sleep 5
+#
 echo -e "Copiando a estrutura de arquivos e diretórios do Syslinux e Pxelinux, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando mkdir: -v (verbose)
