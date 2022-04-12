@@ -1,13 +1,4 @@
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Data de criação: 12/06/2021
-# Data de atualização: 15/06/2021
-# Versão: 0.03
-# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
-# Kernel >= 4.15.x
+# Local Padrao: /etc/default/tftpd-hpa
 # Testado e homologado para a versão do TFTP-HPA v5.2.x e PXE Syslinux v
 
 # configuração do usuário do serviço do TFTP
