@@ -76,7 +76,7 @@ fi
 # || (operador lógico OU), 2> (redirecionar de saída de erro STDERR), && = operador lógico AND, { } = agrupa comandos em blocos
 # [ ] = testa uma expressão, retornando 0 ou 1, -ne = é diferente (NotEqual)
 echo -n "Verificando as dependências do Tftpd-Hpa Server, PXE/Syslinux e NFS Server, aguarde... "
-	for name in isc-dhcp-server nfs-kernel-server
+	for name in nfs-kernel-server
 	do
 		[[ $(dpkg -s $name 2> /dev/null) ]] || { 
 			echo -en "\n\nO software: $name precisa ser instalado. \nUse o comando 'apt install $name'\n";
@@ -140,8 +140,8 @@ sleep 5
 #
 echo -e "Instalando o Serviço do Tftpd-Hpa Server, Client e NFS Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
-	apt -y install tftpd-hpa tftp-hpa nfs-kernel-server &>> $LOG
-echo -e "Tftpd-Hpa Server, Client e NFS Server instalado com sucesso!!!, continuando com o script...\n"
+	apt -y install tftpd-hpa tftp-hpa nfs-kernel-server samba &>> $LOG
+echo -e "Tftpd-Hpa Server, Client, NFS Server e Samba instalado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Instalando o Serviço do Syslinux e Pxelinux, aguarde..."
@@ -167,6 +167,17 @@ echo -e "Atualizando o arquivo de configuração do NFS Server, aguarde..."
 	cp -v conf/exports /etc/exports &>> $LOG
 echo -e "Arquivo atualizado com sucesso!!!, continuando com o script...\n"
 sleep 5
+
+#
+echo -e "Atualizando o arquivo de configuração do SAMBA, aguarde..."
+	# opção do comando: &>> (redirecionar a saída padrão)
+	# opção do comando mv: -v (verbose)
+	# opção do comando cp: -v (verbose)
+	mv -v /etc/samba/smb.conf /etc/samba/smb.conf.old &>> $LOG
+	cp -v conf/smb.conf /etc/samba/smb.conf &>> $LOG
+echo -e "Arquivo atualizado com sucesso!!!, continuando com o script...\n"
+sleep 5
+
 #
 echo -e "Copiando a estrutura de arquivos e diretórios do Syslinux e Pxelinux, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -184,12 +195,6 @@ sleep 5
 echo -e "Editando o arquivo de configuração do Tftpd-Hpa Server, pressione <Enter> para continuar."
 	read
 	vim /etc/default/tftpd-hpa
-echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
-sleep 5
-#
-echo -e "Editando o arquivo de configuração do ISC-DHCP Server, pressione <Enter> para continuar."
-	read
-	vim /etc/dhcp/dhcpd.conf
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -233,12 +238,6 @@ sleep 5
 echo -e "Reinicializando o serviço do Tftpd-Hpa Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	systemctl restart tftpd-hpa &>> $LOG
-echo -e "Serviço reinicializado com sucesso!!!, continuando com o script...\n"
-sleep 5
-#
-echo -e "Reinicializando o serviço do ISC-DHCP Server, aguarde..."
-	# opção do comando: &>> (redirecionar a saída padrão)
-	systemctl restart isc-dhcp-server &>> $LOG
 echo -e "Serviço reinicializado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
