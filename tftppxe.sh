@@ -97,6 +97,9 @@ echo -e "Adicionando o Repositório Multiversão do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+echo -e "Configurando o Fuso Horário para Fortaleza...\n"
+timedatectl set-timezone America/Fortaleza
+ntpdate 172.18.4.12
 echo -e "Atualizando as listas do Apt, aguarde..."
 	#opção do comando: &>> (redirecionar a saída padrão)
 	apt update &>> $LOG
