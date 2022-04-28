@@ -99,6 +99,7 @@ sleep 5
 #
 echo -e "Configurando o Fuso Horário para Fortaleza...\n"
 timedatectl set-timezone America/Fortaleza
+hwclock --systohc
 
 echo -e "Atualizando as listas do Apt, aguarde..."
 	#opção do comando: &>> (redirecionar a saída padrão)
@@ -121,7 +122,7 @@ echo -e "Software removidos com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 apt -y install ntpdate
-ntpdate 172.18.4.12
+
 echo -e "Instalando o Tftpd-Hpa Server/Client e PXE/Syslinux, aguarde...\n"
 sleep 5
 #
