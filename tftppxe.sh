@@ -98,8 +98,8 @@ echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Configurando o Fuso Horário para Fortaleza...\n"
-timedatectl set-timezone America/Fortaleza
-hwclock --systohc
+#timedatectl set-timezone America/Fortaleza
+#hwclock --systohc
 
 echo -e "Atualizando as listas do Apt, aguarde..."
 	#opção do comando: &>> (redirecionar a saída padrão)
@@ -121,7 +121,7 @@ echo -e "Removendo software desnecessários, aguarde..."
 echo -e "Software removidos com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-apt -y install ntpdate
+#apt -y install ntpdate
 
 echo -e "Instalando o Tftpd-Hpa Server/Client e PXE/Syslinux, aguarde...\n"
 sleep 5
@@ -176,7 +176,7 @@ echo -e "Copiando a estrutura de arquivos e diretórios do Syslinux e Pxelinux, 
 	cp -v $PXE/pxelinux.0 $TFTP &>> $LOG
 	cp -v $SYSLINUX/memdisk $TFTP &>> $LOG
 	cp -v $SYSLINUX/modules/bios/{ldlinux.c32,libcom32.c32,libutil.c32,vesamenu.c32} $TFTP &>> $LOG
-	cp -v conf/default-pxe $TFTP/pxelinux.cfg/default &>> $LOG
+	cp -v conf/default $TFTP/pxelinux.cfg/default &>> $LOG
 echo -e "Estrutura de arquivos e diretórios copiados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
